@@ -1,0 +1,5 @@
+digging_arm_controller:
+ type: position_controllers/JointTrajectoryController
+ joints: [base_to_digging_link_1, digging_link_1_to_2, digging_link_2_to_3]
+ state_publish_rate: 25
+ action_monitor_rate: 10

@@ -1,0 +1,10 @@
+seeding_arm_controller:
+ type: position_controllers/JointTrajectoryController
+ joints:
+ - base_to_seeding_link_1
+ - seeding_link_1_to_2
+ - seeding_link_2_to_3
+ - seeding_link_to_clamp1
+ - seeding_link_to_clamp2
+state_publish_rate: 25
+action_monitor_rate: 10

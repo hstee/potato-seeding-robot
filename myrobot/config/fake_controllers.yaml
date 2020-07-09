@@ -1,0 +1,15 @@
+controller_list:
+  - name: fake_digging_arm_controller
+    joints:
+      - base_to_digging_link_1
+      - digging_link_1_to_2
+      - digging_link_2_to_3
+  - name: fake_seeding_arm_controller
+    joints:
+      - base_to_seeding_link_1
+      - seeding_link_1_to_2
+      - seeding_link_2_to_3
+  - name: fake_clamp_controller
+    joints:
+      - seeding_link_to_clamp1
+      - seeding_link_to_clamp2

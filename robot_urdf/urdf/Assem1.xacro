@@ -1,0 +1,834 @@
+<?xml version="0.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="Assem1">
+  
+<xacro:include filename="$(find robot_urdf)/urdf/Assem1.gazebo" />
+<xacro:include filename="$(find robot_urdf)/urdf/materials.xacro" />
+
+
+<link name="world"/>
+<joint name="fixed" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+</joint>
+
+
+<link name="base_link">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="20.0" />
+      <inertia
+        ixx="1.0"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="1.0"
+        iyz="0.0"
+        izz="1.0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_urdf/mesh/base_link.STL" />
+      </geometry>
+      <material
+        name="orange">
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_urdf/mesh/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link
+    name="digging_link_1">
+<inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.63832" />
+      <inertia
+        ixx="1.0"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="1.0"
+        iyz="0.0"
+        izz="1.0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_urdf/mesh/digging_link_1.STL" />
+      </geometry>
+      <material
+        name="grey">
+      </material>
+    </visual>
+    
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_urdf/mesh/digging_link_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+ <joint
+ name="base_to_digging_link_1" type="revolute">
+	<parent link="base_link" />
+    	<child link="digging_link_1" />
+   	
+    	<limit lower="-3.1416" upper="3.1416" effort="0.2" velocity="0.5" />
+ 	<origin xyz="0.17 0 0" rpy="0 0 0" />
+	<axis xyz="0 0 1" />
+  </joint>
+
+  <link
+    name="digging_link_2">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="1.0673" />
+      <inertia
+        ixx="1.0"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="1.0"
+        iyz="0.0"
+        izz="1.0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0.06998 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_urdf/mesh/digging_link_2.STL" />
+      </geometry>
+      <material
+        name="brown">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_urdf/mesh/digging_link_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="digging_link_1_to_2"
+    type="prismatic">
+    <origin
+      xyz="0 0 0.175"
+      rpy="0 0 0" />
+    <parent
+      link="digging_link_1" />
+    <child
+      link="digging_link_2" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0.28"
+      effort="0.2"
+      velocity="0.5" />
+  </joint>
+  <link
+    name="digging_link_3">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.006" />
+      <inertia
+        ixx="1.0"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="1.0"
+        iyz="0.0"
+        izz="1.0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0.04"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_urdf/mesh/digging_link_3.STL" />
+      </geometry>
+      <material
+        name="blue">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_urdf/mesh/digging_link_3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="digging_link_2_to_3"
+    type="prismatic">
+    <origin
+      xyz="0 0.07 0"
+      rpy="3.1416 0 0" />
+    <parent
+      link="digging_link_2" />
+    <child
+      link="digging_link_3" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0.22"
+      effort="0.2"
+      velocity="0.5" />
+  </joint>
+  <link
+    name="seeding_link_1">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.99832" />
+      <inertia
+        ixx="1.0"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="1.0"
+        iyz="0.0"
+        izz="1.0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_urdf/mesh/seeding_link_1.STL" />
+      </geometry>
+      <material
+        name="green">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_urdf/mesh/seeding_link_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="base_to_seeding_link_1"
+    type="revolute">
+    <origin
+      xyz="-0.17 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="seeding_link_1" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.1416"
+      upper="3.1416"
+      effort="0.2"
+      velocity="0.5" />
+  </joint>
+  <link
+    name="seeding_link_2">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="1.0673" />
+      <inertia
+        ixx="1.0"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="1.0"
+        iyz="0.0"
+        izz="1.0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0.07 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_urdf/mesh/seeding_link_2.STL" />
+      </geometry>
+      <material
+        name="grey">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_urdf/mesh/seeding_link_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="seeding_link_1_to_2"
+    type="prismatic">
+    <origin
+      xyz="0 0 0.275"
+      rpy="0 0 0" />
+    <parent
+      link="seeding_link_1" />
+    <child
+      link="seeding_link_2" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0.30"
+      effort="0.2"
+      velocity="0.5" />
+  </joint>
+  <link
+    name="seeding_link_3">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.0057611" />
+      <inertia
+        ixx="1.0"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="1.0"
+        iyz="0.0"
+        izz="1.0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0.04"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_urdf/mesh/seeding_link_3.STL" />
+      </geometry>
+      <material
+        name="orange">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_urdf/mesh/seeding_link_3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="seeding_link_2_to_3"
+    type="prismatic">
+    <origin
+      xyz="0 0.07 0"
+      rpy="3.1416 0 0" />
+    <parent
+      link="seeding_link_2" />
+    <child
+      link="seeding_link_3" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0.22"
+      effort="0.2"
+      velocity="0.5" />
+  </joint>
+  <link
+    name="clamp1">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.071643" />
+      <inertia
+        ixx="1.0"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="1.0"
+        iyz="0.0"
+        izz="1.0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_urdf/mesh/clamp1.STL" />
+      </geometry>
+      <material
+        name="green">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_urdf/mesh/clamp1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="seeding_link_to_clamp1"
+    type="revolute">
+    <origin
+      xyz="-0.055 0 0.05"
+      rpy="0 -0.25224 0" />
+    <parent
+      link="seeding_link_3" />
+    <child
+      link="clamp1" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-1.1516"
+      upper="1.1516"
+      effort="0"
+      velocity="0.5" />
+  </joint>
+  <link
+    name="clamp2">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.071643" />
+      <inertia
+        ixx="1.0"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="1.0"
+        iyz="0.0"
+        izz="1.0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_urdf/mesh/clamp2.STL" />
+      </geometry>
+      <material
+        name="green">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_urdf/mesh/clamp2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="seeding_link_to_clamp2"
+    type="revolute">
+    <origin
+      xyz="0.055 0 0.05"
+      rpy="0 0.084482 0" />
+    <parent
+      link="seeding_link_3" />
+    <child
+      link="clamp2" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-1.1516"
+      upper="1.1516"
+      effort="0"
+      velocity="0.5" />
+  </joint>
+  <link
+    name="tyre1">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.28871" />
+      <inertia
+        ixx="1.0"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="1.0"
+        iyz="0.0"
+        izz="1.0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_urdf/mesh/tyre1.STL" />
+      </geometry>
+      <material
+        name="black">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_urdf/mesh/tyre1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="base_to_tyre1"
+    type="continuous">
+    <origin
+      xyz="0.19123 0.04506 -0.045"
+      rpy="1.5708 0 -3.1416" />
+    <parent
+      link="base_link" />
+    <child
+      link="tyre1" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="tyre2">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.28871" />
+      <inertia
+        ixx="1.0"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="1.0"
+        iyz="0.0"
+        izz="1.0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_urdf/mesh/tyre2.STL" />
+      </geometry>
+      <material
+        name="black">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_urdf/mesh/tyre2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="base_to_tyre2"
+    type="continuous">
+    <origin
+      xyz="-0.1884 0.05491 -0.045"
+      rpy="1.5708 0 -3.1416" />
+    <parent
+      link="base_link" />
+    <child
+      link="tyre2" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="tyre3">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.28871" />
+      <inertia
+        ixx="1.0"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="1.0"
+        iyz="0.0"
+        izz="1.0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_urdf/mesh/tyre3.STL" />
+      </geometry>
+      <material
+        name="black">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_urdf/mesh/tyre3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="base_to_tyre3"
+    type="continuous">
+    <origin
+      xyz="-0.19642 -0.24499 -0.045"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="tyre3" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="tyre4">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.28871" />
+      <inertia
+        ixx="1.0"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="1.0"
+        iyz="0.0"
+        izz="1.0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_urdf/mesh/tyre4.STL" />
+      </geometry>
+      <material
+        name="black">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_urdf/mesh/tyre4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="base_to_tyre4"
+    type="continuous">
+    <origin
+      xyz="0.18346 -0.24499 -0.045"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="tyre4" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+
+<transmission name="tran1">
+    <type>transmission_interface/SimpleTransmission</type>
+	  <joint name="base_to_digging_link_1">
+	    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+	  </joint>
+	  <actuator name="motor1">
+	      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+	      <mechanicalReduction>1</mechanicalReduction>
+	  </actuator>
+</transmission>
+
+<transmission name="tran2">
+    <type>transmission_interface/SimpleTransmission</type>
+	  <joint name="digging_link_1_to_2">
+	    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+	  </joint>
+	  <actuator name="motor2">
+	      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+	      <mechanicalReduction>1</mechanicalReduction>
+	  </actuator>
+</transmission>
+
+<transmission name="tran3">
+    <type>transmission_interface/SimpleTransmission</type>
+	  <joint name="digging_link_2_to_3">
+	    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+	  </joint>
+	  <actuator name="motor3">
+	      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+	      <mechanicalReduction>1</mechanicalReduction>
+	  </actuator>
+</transmission>
+
+<transmission name="tran4">
+    <type>transmission_interface/SimpleTransmission</type>
+	  <joint name="base_to_seeding_link_1">
+	    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+	  </joint>
+	  <actuator name="motor4">
+	      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+	      <mechanicalReduction>1</mechanicalReduction>
+	  </actuator>
+</transmission>
+
+<transmission name="tran5">
+    <type>transmission_interface/SimpleTransmission</type>
+	  <joint name="seeding_link_1_to_2">
+	    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+	  </joint>
+	  <actuator name="motor5">
+	      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+	      <mechanicalReduction>1</mechanicalReduction>
+	  </actuator>
+</transmission>
+
+<transmission name="tran6">
+    <type>transmission_interface/SimpleTransmission</type>
+	  <joint name="seeding_link_2_to_3">
+	    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+	  </joint>
+	  <actuator name="motor6">
+	      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+	      <mechanicalReduction>1</mechanicalReduction>
+	  </actuator>
+</transmission>
+
+<transmission name="tran7">
+    <type>transmission_interface/SimpleTransmission</type>
+	  <joint name="seeding_link_to_clamp1">
+	    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+	  </joint>
+	  <actuator name="motor7">
+	      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+	      <mechanicalReduction>1</mechanicalReduction>
+	  </actuator>
+</transmission>
+
+<transmission name="tran8">
+    <type>transmission_interface/SimpleTransmission</type>
+	  <joint name="seeding_link_to_clamp2">
+	    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+	  </joint>
+	  <actuator name="motor8">
+	      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+	      <mechanicalReduction>1</mechanicalReduction>
+	  </actuator>
+</transmission>
+
+<transmission name="tran9">
+    <type>transmission_interface/SimpleTransmission</type>
+	  <joint name="base_to_tyre1">
+	    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+	  </joint>
+	  <actuator name="motor9">
+	      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+	      <mechanicalReduction>1</mechanicalReduction>
+	  </actuator>
+</transmission>
+
+<transmission name="tran10">
+    <type>transmission_interface/SimpleTransmission</type>
+	  <joint name="base_to_tyre2">
+	    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+	  </joint>
+	  <actuator name="motor10">
+	      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+	      <mechanicalReduction>1</mechanicalReduction>
+	  </actuator>
+</transmission>
+
+<transmission name="tran11">
+    <type>transmission_interface/SimpleTransmission</type>
+	  <joint name="base_to_tyre3">
+	    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+	  </joint>
+	  <actuator name="motor11">
+	      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+	      <mechanicalReduction>1</mechanicalReduction>
+	  </actuator>
+</transmission>
+
+<transmission name="tran12">
+    <type>transmission_interface/SimpleTransmission</type>
+	  <joint name="base_to_tyre4">
+	    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+	  </joint>
+	  <actuator name="motor12">
+	      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+	      <mechanicalReduction>1</mechanicalReduction>
+	  </actuator>
+</transmission>
+
+</robot>

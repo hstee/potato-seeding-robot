@@ -1,0 +1,101 @@
+<?xml version="0.0"?>
+<robot>
+
+  <!-- ros_control plugin -->
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/Assem1</robotNamespace>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+    </plugin>
+  </gazebo>
+
+  <!-- Link1 -->
+  <gazebo reference="base_link">
+    <material>Gazebo/Orange</material>
+  </gazebo>
+
+  <!-- Link2 -->
+  <gazebo reference="digging_link_1">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Grey</material>
+  </gazebo>
+
+  <!-- Link3 -->
+  <gazebo reference="digging_link_2">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Brown</material>
+  </gazebo>
+
+  <!-- Link4 -->
+  <gazebo reference="digging_link_3">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Blue</material>
+  </gazebo>
+
+  <!-- Link5 -->
+  <gazebo reference="seeding_link_1">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Green</material>
+  </gazebo>
+
+  <!-- Link6 -->
+  <gazebo reference="seeding_link_2">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Grey</material>
+  </gazebo>
+
+  <!-- Link7 -->
+  <gazebo reference="seeding_link_3">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Orange</material>
+  </gazebo>
+
+  <!-- Link8 -->
+  <gazebo reference="clamp1">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Green</material>
+  </gazebo>
+
+  <!-- Link9 -->
+  <gazebo reference="clamp2">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Green</material>
+  </gazebo>
+
+  <!-- Link10 -->
+  <gazebo reference="tyre1">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <!-- Link11 -->
+  <gazebo reference="tyre2">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <!-- Link12 -->
+  <gazebo reference="tyre3">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <!-- Link13 -->
+  <gazebo reference="tyre4">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+ </robot>

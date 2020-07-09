@@ -1,0 +1,91 @@
+<launch>
+	<include file="$(find gazebo_ros)/launch/empty_world.launch">
+		<arg name="world_name" value="$(find my_gazebo)/world/empty_world.world"/> 
+		<arg name="paused" value="false"/>
+		<arg name="use_sim_time" value="true"/>
+		<arg name="gui" value="true"/>
+		<arg name="recording" value="false"/>
+		<arg name="debug" value="false"/>
+	</include>
+
+	<!-- Load the URDF into the parameter server -->
+	<param name="robot_description" textfile='$(find robot_urdf)/urdf/Assem1.xacro' />
+
+	<!-- Spin up the node that will spawn the robot model is defined in the URDF -->
+	<node 
+		name="spawn_urdf" 
+		pkg="gazebo_ros" 
+		type="spawn_model" 
+		args="-param robot_description -urdf -model Assem1" 
+	/> 
+
+	  <!-- Robot state publisher -->
+	<node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+		<param name="publish_frequency" type="double" value="50.0" />
+		<param name="tf_prefix" type="string" value="" />
+	</node>
+
+	<!-- joint_state_controller -->
+	<rosparam file="$(find my_gazebo)/controller/joint_state_controller.yaml" command="load"/>
+	<node 
+		name="joint_state_controller_spawner" 
+		pkg="controller_manager" 
+		type="controller_manager" 
+		args="spawn 
+		joint_state_controller" 
+		respawn="false" 
+		output="screen"
+	/>
+
+	<!-- Load controller file to parameter server -->
+	<rosparam file="$(find my_gazebo)/controller/digging_arm_controller.yaml" command="load"/>
+
+	<!-- Spin up the controller node -->
+	<node 
+		name="digging_arm_controller_spawner" 
+		pkg="controller_manager" 
+		type="controller_manager" 
+		args="spawn digging_arm_controller" respawn="false" output="screen"
+	/>
+	
+	<rosparam file="$(find my_gazebo)/controller/seeding_arm_controller.yaml" command="load"/>
+
+	<!-- Spin up the controller node -->
+	<node 
+		name="seeding_arm_controller_spawner" 
+		pkg="controller_manager" 
+		type="controller_manager" 
+		args="spawn seeding_arm_controller" respawn="false" output="screen"
+	/>
+
+        <rosparam file="$(find my_gazebo)/controller/clamp_controller.yaml" command="load"/>
+
+	<!-- Spin up the controller node -->
+	<node 
+		name="clamp_controller_spawner" 
+		pkg="controller_manager" 
+		type="controller_manager" 
+		args="spawn clamp_controller" respawn="false" output="screen"
+	/>
+
+	
+	<rosparam command="load" file="$(find myrobot)/controllers/joint_names.yaml"/>
+
+	<include file="$(find myrobot)/launch/planning_context.launch" >
+		<arg name="load_robot_description" value="true" />
+	</include>
+
+	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+		<param name="/use_gui" value="false"/>
+		<rosparam param="/source_list">[/joint_states]</rosparam>
+	</node>
+
+	<include file="$(find myrobot)/launch/move_group.launch">
+		<arg name="publish_monitored_planning_scene" value="true" />
+	</include>
+
+	<include file="$(find myrobot)/launch/moveit_rviz.launch">
+		<arg name="config" value="true"/>
+	</include>
+
+</launch>
